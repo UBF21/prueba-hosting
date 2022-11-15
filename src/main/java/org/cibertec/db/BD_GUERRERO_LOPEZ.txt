@@ -1,0 +1,55 @@
+create database BD_GUERRERO_LOPEZ;
+use BD_GUERRERO_LOPEZ;
+
+create table Chofer
+(
+id_Chofer int not null auto_increment,
+nombre varchar(40) not null,
+apellido varchar(40) not null,
+edad int not null,
+primary key (id_Chofer)
+);
+
+create table Ruta
+(
+id_Ruta int not null auto_increment,
+nombre varchar(40) not null,
+paraderos int not null,
+primary key (id_Ruta)
+);
+
+create table Bus
+(
+id_Bus int not null auto_increment,
+modelo varchar(30) not null unique,
+asientos int not null,
+caballos_Fuerza int not null,
+motor varchar(50) not null,
+ancho double not null,
+largo double not null,
+id_Ruta int not null,
+id_Chofer int not null,
+primary key (id_Bus),
+foreign key (id_Ruta) references Ruta(id_Ruta),
+foreign key (id_Chofer) references Chofer (id_Chofer)
+);
+
+insert into Chofer values(null,'Julio','Manrique',23);
+insert into Chofer values(null,'Jesus','Montenegro',33);
+insert into Chofer values(null,'Abraham','Gultano',51);
+insert into Chofer values(null,'Mateo','Tuanama',62);
+insert into Chofer values(null,'Vivol','Montes',45);
+
+insert into Ruta values(null,'Rimac-Centro',41);
+insert into Ruta values(null,'Callao-SJL',27);
+insert into Ruta values(null,'Miraflores-Barranco',32);
+insert into Ruta values(null,'SJL-Rimac',19);
+
+insert into Bus values(null,'MDWWAFG-141-RR',33,400,'Nizan-563',3.12,2.67,1,1);
+insert into Bus values(null,'GFFGEHS-657-GG',40,200,'Toyota-093',3.12,2.67,2,2);
+insert into Bus values(null,'MAEGTAG-094-HH',37,500,'Ferari-383',3.12,2.67,3,3);
+insert into Bus values(null,'JRKGVKA-657-RR',29,600,'Mercedes-723',3.12,2.67,4,4);
+insert into Bus values(null,'LKAFGGA-172-JJ',31,350,'Hyundai-234',3.12,2.67,4,5);
+insert into Bus values(null,'AABMFET-832-KK',45,300,'Mazda-612',3.12,2.67,2,3);
+insert into Bus values(null,'CORELAF-933-BB',50,420,'mitsubishi-631',3.12,2.67,4,1);
+insert into Bus values(null,'HMRRYTT-031-VV',39,520,'Chevrolet-124',3.12,2.67,2,3);
